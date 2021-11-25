@@ -1,5 +1,5 @@
 /*
-Jednoduchý program prevadi spotrebu v l/100km na mpg
+Jednoducha kalkulacka
 */
 #include <iostream>
 
