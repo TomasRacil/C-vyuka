@@ -35,4 +35,16 @@ int main()
 		}
 		cout << "Pocet cislic " << counter << endl;
 	}
+
+	int reversedNumber=0;
+	cout << "Number: ";
+	cin >> number;
+	while (number!=0) {
+		reversedNumber *= 10;
+		//int lastDigit = number % 10;
+		reversedNumber += number % 10;
+		number /= 10;
+	}
+	cout << reversedNumber;
+
 }
