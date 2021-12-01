@@ -9,12 +9,16 @@ using namespace std;
 int main()
 {
 	int i = 100;
-	while (i<=500)
+	//while(true)
+	while (i <= 500)
 	{
 		if (i % 3 == 0 && i % 5 == 0) {
 			cout << i<<"\n";
 		}
 		i++;
+		/*if (i > 500) {
+			break;
+		}*/
 	}
 
 	int number;
@@ -46,5 +50,4 @@ int main()
 		number /= 10;
 	}
 	cout << reversedNumber;
-
 }

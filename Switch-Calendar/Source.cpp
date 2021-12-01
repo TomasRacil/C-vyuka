@@ -1,7 +1,7 @@
-/*
-Demonstrace switch case; vužití pro výpis poètu dnù v mìsící
-*/
-
+///*
+//Demonstrace switch case; vužití pro výpis poètu dnù v mìsící
+//*/
+//
 #include <iostream>
 
 using namespace std;

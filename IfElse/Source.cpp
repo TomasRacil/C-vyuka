@@ -9,7 +9,7 @@ using namespace std;
 int main()
 {
 	int number;
-	cout << "Zadej cislo cele cislo: ";
+	cout << "Zadej cele cislo: ";
 	cin >> number;
 	if (number % 2 == 0) {
 		cout << "cislo je sude\n";
@@ -29,9 +29,22 @@ int main()
 			cout << "je to obecny trojuhelnik";
 		}
 		else {
-			cout << "je to rovnostrany trojuhelnik";
+			cout << "je to rovnorameny trojuhelnik";
 		}
 		
+	}
+
+	//int a, b, c;
+	cout << "Zadej delky stran trojuhlniku: \n";
+	cin >> a >> b >> c;
+	if (a == b && b == c) {
+		cout << "je to rovnostrany trojuhelnik";
+	}
+	else if (a != b && b != c && c != a) {
+		cout << "je to obecny trojuhelnik";
+	}
+	else {
+		cout << "je to rovnorameny trojuhelnik";
 	}
 
 

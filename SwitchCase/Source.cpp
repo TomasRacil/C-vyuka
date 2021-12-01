@@ -26,7 +26,7 @@ int main()
 			cout << "=" << (int(a) % int(b)) << "\n"; break;
 		}
 		else {
-			cout << "operace neni validni \n";
+			cout << "operace neni validni \n"; break;
 		}
 		
 	default: cout << "operace neni validni \n"; break;
