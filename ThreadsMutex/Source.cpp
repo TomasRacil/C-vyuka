@@ -19,10 +19,9 @@ int ThreadFunc(int lpParam)
 		allowAccess.lock();
 		//std::lock_guard<std::mutex> lock(allowAccess);
 		std::this_thread::sleep_for(0.25s);
-		std::cout << i << " id:" << std::this_thread::get_id() << '\r' << std::flush;
-		//std::cout << i << " id:" << std::this_thread::get_id() << "\n";
+		//std::cout << i << " id:" << std::this_thread::get_id() << '\r' << std::flush;
+		std::cout << i << " id:" << std::this_thread::get_id() << "\n";
 		std::this_thread::sleep_for(0.25s);
-		//std::lock_guard<std::mutex> unlock(allowAccess);
 		allowAccess.unlock();
 
 		
@@ -51,7 +50,7 @@ int main()
 
 	std::cout << "Vytvorime vlakno 2 ... \n";
 
-	parametr = 20;
+	parametr = 100;
 
 	std::thread th2(ThreadFunc, parametr);
 
@@ -62,7 +61,7 @@ int main()
 
 
 
-	Sleep(4000);
+	Sleep(8000);
 	std::cout << "\nSignalizujeme ukonceni vlakna...\n";
 	STOP_THREAD_SIGNAL = true;
 

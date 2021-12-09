@@ -36,11 +36,11 @@ int main()
 	}
 
 
-	Sleep(2000);
+	Sleep(6000);
 
 	std::cout<<"Vytvorime vlakno 2 ... \n";
 
-	parametr = 20;
+	parametr = 100;
 
 	std::thread th2(ThreadFunc, parametr);
 
@@ -51,7 +51,7 @@ int main()
 
 
 
-	Sleep(4000);
+	Sleep(10000);
 	std::cout<<"\nSignalizujeme ukonceni vlakna...\n";
 	STOP_THREAD_SIGNAL = true;
 	

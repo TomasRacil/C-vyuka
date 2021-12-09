@@ -47,8 +47,6 @@ int main()
 
 /*
 *** Vyukovy program pro laboratore z predmetu Operacni systemy, Petr Frantis, UO Brno, K-209 ***
-#include "stdafx.h"
-#include "windows.h"
 
 
 DWORD WINAPI ThreadFunc(LPVOID lpParam)
