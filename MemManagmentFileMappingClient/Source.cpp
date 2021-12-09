@@ -41,7 +41,7 @@ int _tmain()
         return 1;
     }
 
-    MessageBox(NULL, pBuf, TEXT("Process2"), MB_OK);
+    //MessageBox(NULL, pBuf, TEXT("Process2"), MB_OK);
 
 	std::wstring w;
 	w = pBuf;

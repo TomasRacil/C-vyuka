@@ -6,7 +6,7 @@
 
 #define BUF_SIZE 256
 TCHAR szName[] = TEXT("Global\\MyFileMappingObject");
-TCHAR szMsg[] = TEXT("Message from first process.");
+TCHAR szMsg[] = TEXT("Message from first process. Toto je zpráva z našeho serveru.");
 
 int _tmain()
 {
