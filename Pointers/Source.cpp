@@ -14,10 +14,10 @@ int main() {
 	char* f = &c; 
 
 
-	printf("hodnota n=%d hodnota c=%c\n", n, c);
-	printf("pointer na cislo=%p pointer na znak=%p\n", p, f);
-	/*printf("hodnota n=%d hodnota c=%c\n",*p, *f);
-	printf("pointer na cislo=%p pointer na znak=%p\n", &n, &c);*/
+	/*printf("hodnota n=%d hodnota c=%c\n", n, c);
+	printf("pointer na cislo=%p pointer na znak=%p\n", p, f);*/
+	printf("hodnota n=%d hodnota c=%c\n",*p, *f);
+	printf("pointer na cislo=%p pointer na znak=%p\n", &n, &c);
 
 
 	int* u;
