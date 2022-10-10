@@ -1,7 +1,8 @@
 
 #include <iostream>
 #include <string>
-#include <format>
+//#include <format> //C++ 20
+#include <time.h>
 
 
 
@@ -25,10 +26,12 @@ void task_1(int f_len, int fl_len) {
             }
         }
         else if (i % fl_len == 0) {
-            cout << format("{}\t", (i * 2));
+            //cout << format("{}\t", (i * 2)); //C++ 20
+            cout << i * 2 << "\t";
         }
         else {
-            cout << format("{}\t", i);
+            //cout << format("{}\t", i); //C++ 20
+            cout << i << "\t";
         }
         if (i % 10 == 0) {
             cout << endl;
@@ -57,7 +60,8 @@ void task_2(int** arr, int rows, int cols, int l_name) {
             }
         }
     }
-    cout << format("Nejvyssi cilo je {}\nNejniysi cislo je {}\n a pocet vyskytu cisla {} je {}", max, min, l_name, count);
+    //cout << format("Nejvyssi cilo je {}\nNejnizsi cislo je {}\n a pocet vyskytu cisla {} je {}", max, min, l_name, count); //C++ 20
+    cout << "Nejvyssi cilo je " << max << "\nNejnizsi cislo je " << min << "\n a pocet vyskytu cisla " << l_name << " je " << count;
 }
 
 int factorial(int num) {
@@ -82,7 +86,8 @@ void print_2d_array(int** arr, int rows, int cols) {
     */
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
-            cout << format("{}\t", arr[i][j]);
+            //cout << format("{}\t", arr[i][j]);
+            cout << arr[i][j] << "\t";
         }
         cout << endl;
     }
@@ -116,14 +121,16 @@ int main()
     int f_len, l_len, fl_len, rows, cols, num;
 
     cout << "Zadejte vase krestni jmeno:";
-    getline(cin, first_name);
+    cin >> first_name;
     f_len = first_name.length();
-    cout << format("Delka krestniho jmena je: {}\n", f_len);
+    //cout << format("Delka krestniho jmena je: {}\n", f_len); //C++ 20
+    cout << "Delka krestniho jmena je: " << f_len<< endl;
 
     cout << "Zadejte vase prijmeni jmeno:";
-    getline(cin, last_name);
+    cin >> last_name;
     l_len = last_name.length();
-    cout << format("Delka prijmeni je: {}\n", l_len);
+    //cout << format("Delka prijmeni je: {}\n", l_len); // C++ 20
+    cout << "Delka prijmeni je: " << l_len<<endl;
 
 
     fl_len = f_len + l_len;
@@ -144,6 +151,6 @@ int main()
 
     cout << "Zadej ciso pro spocitani faktorialu: ";
     cin >> num;
-    cout << factorial(num);
+    cout << "Faktorial je: "<<factorial(num);
 }
 
