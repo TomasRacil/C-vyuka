@@ -8,7 +8,12 @@
 using namespace std;
 
 void task_1(int f_len, int fl_len) {
-
+    /*
+    * Fuknkce vypisuje èísla od 0 do 100. 
+    * Pokud narazí na èíslo, které je násobkem poètu písmen ve vašem køestním jménì vynechá toto èíslo. 
+    * Pokud narazí na èíslo, které je násobkem poètu písmen souètu vašeho køestního jména a pøíjmení, vypíše dvojnásobek tohoto èísla. 
+    * Pokud jsou obì podmínky splnìny vypíše 'X'.
+    */
     for (int i = 0; i <= 100; i++) {
 
         if (i % f_len == 0) {
@@ -32,6 +37,10 @@ void task_1(int f_len, int fl_len) {
 }
 
 void task_2(int** arr, int rows, int cols, int l_name) {
+    /*
+    * Funkce v dvojrozmernem poli najde nejvyssi a nejnizsi cislo. 
+    * Take pocet vyskytu cisla l_name
+    */
 
     int min = arr[0][0], max = arr[0][0], count = 0;
 
@@ -52,6 +61,9 @@ void task_2(int** arr, int rows, int cols, int l_name) {
 }
 
 int factorial(int num) {
+    /*
+    * Funkce pocita rekurzivne faktorial.    
+    */
     if (num < 0) {
         cout << "Nedefinovano";
         return NULL;
@@ -65,6 +77,9 @@ int factorial(int num) {
 }
 
 void print_2d_array(int** arr, int rows, int cols) {
+    /*
+    * Tisk 2d pole.
+    */
     for (int i = 0; i < rows; i++) {
         for (int j = 0; j < cols; j++) {
             cout << format("{}\t", arr[i][j]);
@@ -74,6 +89,9 @@ void print_2d_array(int** arr, int rows, int cols) {
 }
 
 int** initialize_2d_array(int rows, int cols) {
+    /*
+    * Inicializace 2d pole.
+    */
     srand(time(0));
     int** arr;
     arr = new int* [rows];
