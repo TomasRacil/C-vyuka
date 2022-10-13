@@ -61,7 +61,7 @@ void task_2(int** arr, int rows, int cols, int l_name) {
         }
     }
     //cout << format("Nejvyssi cilo je {}\nNejnizsi cislo je {}\n a pocet vyskytu cisla {} je {}", max, min, l_name, count); //C++ 20
-    cout << "Nejvyssi cilo je " << max << "\nNejnizsi cislo je " << min << "\n a pocet vyskytu cisla " << l_name << " je " << count;
+    cout << "Nejvyssi cilo je " << max << "\nNejnizsi cislo je " << min << "\na pocet vyskytu cisla " << l_name << " je " << count<<endl;
 }
 
 int factorial(int num) {
@@ -69,7 +69,7 @@ int factorial(int num) {
     * Funkce pocita rekurzivne faktorial.    
     */
     if (num < 0) {
-        cout << "Nedefinovano";
+        cout << "Není definován.\n";
         return NULL;
     }
     else if (num == 1 || num ==0) {
