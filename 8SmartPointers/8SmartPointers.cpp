@@ -49,7 +49,10 @@ int main()
     {
         shared_ptr<int>sharedPtr = make_shared<int>(25);
         weakPtr1 = sharedPtr;
+        cout << *weakPtr1.lock()<< endl;
     }
+    //objet to which pointer pointed was erased so next line will raise error
+    //cout << *weakPtr1.lock() <<endl;
 
     return 0;
 }
