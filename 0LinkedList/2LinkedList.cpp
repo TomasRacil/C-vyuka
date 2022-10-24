@@ -18,7 +18,7 @@ int* randArr(int len);
 Node* newNode(int val);
 Node* initLL(int* arr, int len);
 Node* getNode(Node* node, int idx);
-Node* rmNode(Node* node, int idx);
+void rmNode(Node** node, int idx);
 Node* addNode(Node* node, int idx, int val);
 
 
@@ -34,6 +34,24 @@ int main()
 	printArr(arr, len);
 	Node* head = initLL(arr, len);
 	cout << "LL: " << endl;
+	printLL(head);
+
+
+	/*cout << "Zadej kolikaty prvek chces odebrat: ";
+	cin >> idx;
+	try {
+		rmNode(&head, idx);
+	}
+	catch (out_of_range& e) {
+		cout << e.what() << endl;
+	}
+	printLL(head);*/
+
+	cout << "Zadej kam chces pridat prvek: ";
+	cin >> idx;
+	cout << "Zadej jeho honotu: ";
+	cin >> val;
+	head = addNode(head, idx, val);
 	printLL(head);
 
 	/*
@@ -127,20 +145,19 @@ Node* getNode(Node* node, int idx)
 	else return getNode(node->next, idx - 1);
 }
 
-Node* rmNode(Node* head, int idx)
+void rmNode(Node** head, int idx)
 {
-	Node* erased = getNode(head, idx);
+	Node* erased = getNode(*head, idx);
 	if (idx > 0) {
-		Node* prev = getNode(head, idx - 1);
+		Node* prev = getNode(*head, idx - 1);
 		if (prev != erased) {
-			if (erased->next == NULL) prev->next = erased->next;
+			if (erased->next != NULL) prev->next = erased->next;
 			else prev->next = NULL;
 		}
 		else throw out_of_range("Outside of LL bounds");
 	}
-	else head = getNode(head, idx + 1);
+	else *head = getNode(*head, idx + 1);
 	delete erased;
-	return head;
 
 }
 
