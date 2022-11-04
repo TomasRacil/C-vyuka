@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{fc63a77c-832d-480f-9da8-d2e81e826e4c}</ProjectGuid>
-    <RootNamespace>My0QuizApp</RootNamespace>
+    <ProjectGuid>{1559a606-80a3-4547-a005-3bf485e5d238}</ProjectGuid>
+    <RootNamespace>My1Ship</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,10 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="0_QuizApp.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Questions.txt" />
+    <ClCompile Include="1_Ship.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

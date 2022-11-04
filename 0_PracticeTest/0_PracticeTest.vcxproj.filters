@@ -15,13 +15,8 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="0_QuizApp.cpp">
+    <ClCompile Include="0_PracticeTest.cpp">
       <Filter>Zdrojové soubory</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Text Include="Questions.txt">
-      <Filter>Soubory zdrojů</Filter>
-    </Text>
   </ItemGroup>
 </Project>

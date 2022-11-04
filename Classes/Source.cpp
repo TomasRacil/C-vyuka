@@ -6,20 +6,27 @@ class Person
 {
 public:
 	bool gender;
-	int height;
+	
 	void setAge(int ageValue);
 	int getAge();
 	Person(bool genderValue, int heightValue, int ageValue);
+	void changeHeightAndGender(bool genderVal, int heightVal);
 private:
+	void setHeight(int heightValue);
+	int height;
 	int age;
-protected:
 
 };
 Person::Person(bool genderValue, int heightValue, int ageValue)
 {
 	gender = genderValue;
-	height = heightValue;
+	height = height;
 	age = ageValue;
+}
+void Person::changeHeightAndGender(bool genderVal, int heightVal)
+{
+	gender = genderVal;
+	setHeight(heightVal);
 }
 void Person::setAge(int ageValue)
 {
@@ -35,6 +42,10 @@ int Person::getAge()
 	return age;
 }
 
+void Person::setHeight(int heightValue) {
+	height = heightValue;
+}
+
 
 int main() {
 
@@ -42,9 +53,9 @@ int main() {
 
 	//tomas.setAge(20);
 
-	////tomas.age = 20;
-	//tomas.gender = 0;
-	//tomas.height = 170;
+	//tomas.age = 20;
+	tomas.gender = 0;
+	tomas.height = 170;
 
 	//cin >> tomas.age;
 	int vek;

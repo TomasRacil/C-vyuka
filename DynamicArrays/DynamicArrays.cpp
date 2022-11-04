@@ -23,7 +23,7 @@ int main()
         //cout << *(myArray+i) << "\t";
     }
 
-    delete[]myArray; // neybytene u dynamicky alokovanych poli
+    delete[]myArray; // nezbytne u dynamicky alokovanych poli
     myArray = NULL;
 
     return 0;

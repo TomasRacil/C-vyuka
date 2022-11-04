@@ -15,20 +15,7 @@ protected:
 	int moveAmount;
 
 };
-Animal::Animal(int startingPosition) {
-	moveAmount = 1;
-	x = startingPosition;
-	cout << "Constructor animal"<<endl;
-	/*x = startingPosition;*/
-}
-void Animal::move()
-{
-	x += moveAmount;
-}
-int Animal::getX()
-{
-	return x;
-}
+
 
 class Turtle:public Animal
 {
@@ -36,22 +23,13 @@ public:
 	Turtle(int startignPosition);
 };
 
-Turtle::Turtle(int startignPosition):Animal(startignPosition) 
-{
-	moveAmount = 5;
-	cout << "Constuctor Turtle"<<endl;
-}
 
 class Cat : public Animal
 {
 public:
 	Cat(int startignPosition);
 };
-Cat::Cat(int startignPosition):Animal(startignPosition)
-{
-	moveAmount = 10;
-	cout << "Constuctor Cat" << endl;
-}
+
 
 
 int main() {
@@ -74,3 +52,33 @@ int main() {
 }
 
 
+Animal::Animal(int startingPosition) {
+	moveAmount = 1;
+	x = startingPosition;
+	cout << "Constructor animal" << endl;
+	/*x = startingPosition;*/
+}
+void Animal::move()
+{
+	x += moveAmount;
+}
+int Animal::getX()
+{
+	return x;
+}
+
+
+
+Turtle::Turtle(int startignPosition) :Animal(startignPosition)
+{
+	moveAmount = 5;
+	cout << "Constuctor Turtle" << endl;
+}
+
+
+
+Cat::Cat(int startignPosition) :Animal(startignPosition)
+{
+	moveAmount = 10;
+	cout << "Constuctor Cat" << endl;
+}

@@ -36,55 +36,69 @@ int main()
 	cout << "LL: " << endl;
 	printLL(head);
 
+	bool run = true;
 
-	/*cout << "Zadej kolikaty prvek chces odebrat: ";
-	cin >> idx;
-	try {
-		rmNode(&head, idx);
+	while (run) {
+		cout << "Zadej operaci k provedeni 0-Odebrani prvku; 1-Pridani prvku; 2-Zorazeni prvku; 3-Zmena prvku; 4-smaz vse a ukonci program: ";
+		int option;
+		cin >> option;
+		cout << endl;
+
+		switch (option) {
+		case 0:
+		{
+			cout << "Zadej kolikaty prvek chces odebrat: ";
+			cin >> idx;
+			try {
+				rmNode(&head, idx);
+			}
+			catch (out_of_range& e) {
+				cout << e.what() << endl;
+			}
+
+			printLL(head);
+
+			break;
+		}
+		case 1:
+		{
+			cout << "Zadej kam chces pridat prvek: ";
+			cin >> idx;
+			cout << "Zadej jeho honotu: ";
+			cin >> val;
+			head = addNode(head, idx, val);
+
+			printLL(head);
+
+			break;
+		}
+		case 2:
+		{
+			cout << "Zadej kolikaty prvek chces zobrazit: ";
+			cin >> idx;
+			cout << getNode(head, idx)->val << endl;
+			printLL(head);
+			break;
+		}
+		case 3:
+		{
+			cout << "Zadej kolikaty prvek chces zmenit: ";
+			cin >> idx;
+			cout << "Zadej novou honotu: ";
+			cin >> val;
+			getNode(head, idx)->val = val;
+			printLL(head);
+			break;
+		}
+		case 5:
+		{
+			delLL(head);
+			printLL(head);
+			run = false;
+		}
+		}
 	}
-	catch (out_of_range& e) {
-		cout << e.what() << endl;
-	}
-	printLL(head);*/
-
-	cout << "Zadej kam chces pridat prvek: ";
-	cin >> idx;
-	cout << "Zadej jeho honotu: ";
-	cin >> val;
-	head = addNode(head, idx, val);
-	printLL(head);
-
-	/*
-	cout << "Zadej kolikaty prvek chces zobrazit: ";
-	cin >> idx;
-	cout << getNode(head, idx)->val << endl;
-
-	cout << "Zadej kolikaty prvek chces zmenit: ";
-	cin >> idx;
-	cout << "Zadej novou honotu: ";
-	cin >> val;
-	getNode(head, idx)->val = val;
-	printLL(head);
-
-	cout << "Zadej kolikaty prvek chces odebrat: ";
-	cin >> idx;
-	try {
-		head = rmNode(head, idx);
-	}
-	catch (out_of_range& e) {
-		cout << e.what() << endl;
-	}
-	printLL(head);
-
-
-	cout << "Zadej kam chces pridat prvek: ";
-	cin >> idx;
-	cout << "Zadej jeho honotu: ";
-	cin >> val;
-	head = addNode(head, idx, val);
-	printLL(head);
-	*/
-	delLL(head);
+	
 }
 
 void printArr(int* arr, int len)
