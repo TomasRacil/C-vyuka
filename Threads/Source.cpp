@@ -2,13 +2,14 @@
 // using three different callables.
 #include <iostream>
 #include <thread>
+
 using namespace std;
 
 // A dummy function
-void foo(int Z)
+void foo(int Z, int id)
 {
     for (int i = 0; i < Z; i++) {
-        cout << "Thread using function pointer as callable\n";
+        cout << "Thread "<< id <<" using function pointer as callable\n";
     }
 }
 
@@ -18,8 +19,13 @@ public:
     void operator()(int x)
     {
         for (int i = 0; i < x; i++)
-            cout << "Thread using function object as  callable\n";
+            cout << "Thread "<< id <<" using function object as  callable\n";
     }
+    thread_obj(int id) {
+        this->id = id;
+    }
+private:
+    int id;
 };
 
 int main()
@@ -28,21 +34,21 @@ int main()
 
     // This thread is launched by using 
     // function pointer as callable
-    thread th1(foo, 3);
+    thread th1(foo, 3, 1);
 
     // This thread is launched by using
     // function object as callable
-    thread th2(thread_obj(), 3);
+    thread th2(thread_obj(2), 3);
 
     // Define a Lambda Expression
-    auto f = [](int x) {
+    auto f = [](int x, int id) {
         for (int i = 0; i < x; i++)
-            cout << "Thread using lambda expression as callable\n";
+            cout << "Thread "<< id <<" using lambda expression as callable\n";
     };
 
     // This thread is launched by using 
     // lamda expression as callable
-    thread th3(f, 3);
+    thread th3(f, 3, 3);
 
     // Wait for the threads to finish
     // Wait for thread t1 to finish
