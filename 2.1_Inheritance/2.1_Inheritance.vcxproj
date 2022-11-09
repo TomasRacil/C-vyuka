@@ -129,9 +129,11 @@
   <ItemGroup>
     <ClCompile Include="PrislusnikUO.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="StalyStav.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrislusnikUO.h" />
+    <ClInclude Include="StalyStav.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
