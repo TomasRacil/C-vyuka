@@ -38,6 +38,10 @@ std::string PrislusnikUO::getPrijmeni()
 
 void PrislusnikUO::setRodneCislo(std::string rodneCislo)
 {
+	while (rodneCislo.size() > 11) {
+		std::cout << "Rodne cislo neni vhodne zadane, zadejte nove" << std::endl;
+		std::cin >> rodneCislo;
+	}
 	this->rodneCislo = rodneCislo;
 }
 
