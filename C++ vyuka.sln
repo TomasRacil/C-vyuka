@@ -31,17 +31,17 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Function", "Function\Functi
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NestingLoops", "NestingLoops\NestingLoops.vcxproj", "{F7A8B3AF-99AA-41B2-A453-B483D969E4F9}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Threads", "Threads\Threads.vcxproj", "{7820CE33-2312-4494-9144-2681FDD6F6A1}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1_Threads", "Threads\Threads.vcxproj", "{7820CE33-2312-4494-9144-2681FDD6F6A1}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BasicThread", "BasicThreads\BasicThreads.vcxproj", "{5C7C267A-CAA0-48C5-8AA6-34A0AF457648}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0_BasicThread", "BasicThreads\BasicThreads.vcxproj", "{5C7C267A-CAA0-48C5-8AA6-34A0AF457648}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BasicMultipleThreads", "BasicMultipleThreads\BasicMultipleThreads.vcxproj", "{8F986AF2-AFC1-454B-836B-D9FB8379A699}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2_BasicMultipleThreads", "BasicMultipleThreads\BasicMultipleThreads.vcxproj", "{8F986AF2-AFC1-454B-836B-D9FB8379A699}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ThreadsMutex", "ThreadsMutex\ThreadsMutex.vcxproj", "{0175D322-009E-4DA0-A1D6-2FF39246A367}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "3_ThreadsMutex", "ThreadsMutex\ThreadsMutex.vcxproj", "{0175D322-009E-4DA0-A1D6-2FF39246A367}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ThreadsMutexBankAndPrimes", "ThreadsMutexBankAndPrimes\ThreadsMutexBankAndPrimes.vcxproj", "{A57C5920-05FC-4464-8D2C-4ED8BC19EA6B}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "5_ThreadsMutexBankAndPrimes", "ThreadsMutexBankAndPrimes\ThreadsMutexBankAndPrimes.vcxproj", "{A57C5920-05FC-4464-8D2C-4ED8BC19EA6B}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ThreadsSemaphore", "ThreadsSemaphore\ThreadsSemaphore.vcxproj", "{D22AC14B-FD4A-4DE0-BD63-582B5C8DAAA9}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "4_ThreadsSemaphore", "ThreadsSemaphore\ThreadsSemaphore.vcxproj", "{D22AC14B-FD4A-4DE0-BD63-582B5C8DAAA9}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MemManagmentFileMappingClient", "MemManagmentFileMappingClient\MemManagmentFileMappingClient.vcxproj", "{C4A95487-A440-4955-A9A4-39F11580BD11}"
 EndProject
@@ -142,6 +142,10 @@ EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "0_PracticeTest", "0_PracticeTest\0_PracticeTest.vcxproj", "{1FB1A151-D3B7-4CB9-85A8-E6BE0CBAEFF1}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1_Ship", "1_Ship\1_Ship.vcxproj", "{1559A606-80A3-4547-A005-3BF485E5D238}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2_Inheritance", "2_Inheritance\2_Inheritance.vcxproj", "{83D131FF-1ACC-482C-9484-8062AC94C2A8}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2.1_Inheritance", "2.1_Inheritance\2.1_Inheritance.vcxproj", "{6AA276D3-55F8-455F-88CD-D352BEC6CF0D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -599,6 +603,22 @@ Global
 		{1559A606-80A3-4547-A005-3BF485E5D238}.Release|x64.Build.0 = Release|x64
 		{1559A606-80A3-4547-A005-3BF485E5D238}.Release|x86.ActiveCfg = Release|Win32
 		{1559A606-80A3-4547-A005-3BF485E5D238}.Release|x86.Build.0 = Release|Win32
+		{83D131FF-1ACC-482C-9484-8062AC94C2A8}.Debug|x64.ActiveCfg = Debug|x64
+		{83D131FF-1ACC-482C-9484-8062AC94C2A8}.Debug|x64.Build.0 = Debug|x64
+		{83D131FF-1ACC-482C-9484-8062AC94C2A8}.Debug|x86.ActiveCfg = Debug|Win32
+		{83D131FF-1ACC-482C-9484-8062AC94C2A8}.Debug|x86.Build.0 = Debug|Win32
+		{83D131FF-1ACC-482C-9484-8062AC94C2A8}.Release|x64.ActiveCfg = Release|x64
+		{83D131FF-1ACC-482C-9484-8062AC94C2A8}.Release|x64.Build.0 = Release|x64
+		{83D131FF-1ACC-482C-9484-8062AC94C2A8}.Release|x86.ActiveCfg = Release|Win32
+		{83D131FF-1ACC-482C-9484-8062AC94C2A8}.Release|x86.Build.0 = Release|Win32
+		{6AA276D3-55F8-455F-88CD-D352BEC6CF0D}.Debug|x64.ActiveCfg = Debug|x64
+		{6AA276D3-55F8-455F-88CD-D352BEC6CF0D}.Debug|x64.Build.0 = Debug|x64
+		{6AA276D3-55F8-455F-88CD-D352BEC6CF0D}.Debug|x86.ActiveCfg = Debug|Win32
+		{6AA276D3-55F8-455F-88CD-D352BEC6CF0D}.Debug|x86.Build.0 = Debug|Win32
+		{6AA276D3-55F8-455F-88CD-D352BEC6CF0D}.Release|x64.ActiveCfg = Release|x64
+		{6AA276D3-55F8-455F-88CD-D352BEC6CF0D}.Release|x64.Build.0 = Release|x64
+		{6AA276D3-55F8-455F-88CD-D352BEC6CF0D}.Release|x86.ActiveCfg = Release|Win32
+		{6AA276D3-55F8-455F-88CD-D352BEC6CF0D}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -664,6 +684,8 @@ Global
 		{CE5C40C2-AAB2-4B5B-A5B0-21FF1A98BCD8} = {31C33528-F636-48F5-A50B-9D343F2BDFC7}
 		{1FB1A151-D3B7-4CB9-85A8-E6BE0CBAEFF1} = {CE5C40C2-AAB2-4B5B-A5B0-21FF1A98BCD8}
 		{1559A606-80A3-4547-A005-3BF485E5D238} = {CE5C40C2-AAB2-4B5B-A5B0-21FF1A98BCD8}
+		{83D131FF-1ACC-482C-9484-8062AC94C2A8} = {CE5C40C2-AAB2-4B5B-A5B0-21FF1A98BCD8}
+		{6AA276D3-55F8-455F-88CD-D352BEC6CF0D} = {CE5C40C2-AAB2-4B5B-A5B0-21FF1A98BCD8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0D2358D6-B874-4119-B484-E868F0308E24}
