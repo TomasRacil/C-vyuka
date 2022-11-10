@@ -2,6 +2,8 @@
 
 PrislusnikUO::PrislusnikUO()
 {
+	/*setKrestniJmeno();
+	setPrijmeni();*/
 	this->krestniJmeno = "";
 	this->prijmeni = "";
 	this->rodneCislo = "";
@@ -12,11 +14,15 @@ PrislusnikUO::PrislusnikUO(std::string krestniJmeno, std::string prijmeni, std::
 	setKrestniJmeno(krestniJmeno);
 	setPrijmeni(prijmeni);
 	setRodneCislo(rodneCislo);
-	std::cout<< "Prislusnik UO s rodnym cislem " << rodneCislo << " byl vytvoren" << std::endl;
+	std::cout << getCeleJmeno() << " s rodnym cislem " << rodneCislo << " se stal prislusnikem UO" << std::endl;
 }
 
 void PrislusnikUO::setKrestniJmeno(std::string krestniJmeno)
 {
+	while (!(isupper(krestniJmeno[0]) && krestniJmeno.find(" ") == std::string::npos)) {
+		std::cout << "Spatne zadane krestni jmeno, zadej znovu: ";
+		std::cin >> krestniJmeno;
+	}
 	this->krestniJmeno = krestniJmeno;
 }
 
@@ -27,6 +33,10 @@ std::string PrislusnikUO::getKrestniJmeno()
 
 void PrislusnikUO::setPrijmeni(std::string prijmeni)
 {
+	while (!(isupper(prijmeni[0]) && prijmeni.find(" ") == std::string::npos)) {
+		std::cout << "Spatne zadane prijmeni, zadej znovu: ";
+		std::cin >> prijmeni;
+	}
 	this->prijmeni = prijmeni;
 }
 
@@ -56,5 +66,5 @@ std::string PrislusnikUO::getCeleJmeno()
 
 PrislusnikUO::~PrislusnikUO()
 {
-	std::cout << "Prislusnik UO s rodnym cislem " << rodneCislo << " byl smazan" << std::endl;
+	std::cout << getCeleJmeno() << " s rodnym cislem " << rodneCislo << " prestal byt prislusnik UO" << std::endl;
 }

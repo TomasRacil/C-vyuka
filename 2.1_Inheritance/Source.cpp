@@ -7,8 +7,8 @@
 
 int main() {
 	//std::cout << "Hello" << std::endl;
-	//PrislusnikUO prislunik("Tomas", "Racil", "123456/1234");
+	PrislusnikUO prislunik("tomas", "Rac il", "123456/1234");
 	//StalyStav stalyStav("Tomas", "Racil", "123456/1234", "K209");
 	//Vojak vojak(1234, "vojin");
-	VojenskyStalyStav vojStalStav(123455, "vojin", "Tomas", "Racil", "123456/1234654", "K209");
+	//VojenskyStalyStav vojStalStav(123455, "vojin", "tomas", "Racil", "123456/1234654", "K209");
 }
