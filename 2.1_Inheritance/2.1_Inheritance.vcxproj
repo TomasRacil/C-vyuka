@@ -130,14 +130,22 @@
     <ClCompile Include="PrislusnikUO.cpp" />
     <ClCompile Include="Source.cpp" />
     <ClCompile Include="StalyStav.cpp" />
+    <ClCompile Include="Student.cpp" />
+    <ClCompile Include="Ucitel.cpp" />
     <ClCompile Include="Vojak.cpp" />
     <ClCompile Include="VojenskyStalyStav.cpp" />
+    <ClCompile Include="VojenskyStudent.cpp" />
+    <ClCompile Include="VojenskyUcitel.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PrislusnikUO.h" />
     <ClInclude Include="StalyStav.h" />
+    <ClInclude Include="Student.h" />
+    <ClInclude Include="Ucitel.h" />
     <ClInclude Include="Vojak.h" />
     <ClInclude Include="VojenskyStalyStav.h" />
+    <ClInclude Include="VojenskyStudent.h" />
+    <ClInclude Include="VojenskyUcitel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

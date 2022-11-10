@@ -1,5 +1,4 @@
 #include "PrislusnikUO.h"
-#include <iostream>
 
 PrislusnikUO::PrislusnikUO()
 {
