@@ -8,11 +8,6 @@
 using namespace std;
 
 class Vozidlo {
-private:
-    string Znacka;
-    int UjetoKm;
-    int Projeto;
-    float Spotreba;
 public:
     Vozidlo();
     void NastavZnacku(string znacka);
@@ -20,6 +15,12 @@ public:
     void NastavLitry(int l);
     void VypocetSpotreby();
     void Ukazpotrebu();
+
+private:
+    string Znacka;
+    int UjetoKm;
+    int Projeto;
+    float Spotreba;
 };
 
 bool JePrvocislo(int cislo);

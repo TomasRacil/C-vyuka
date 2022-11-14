@@ -1,19 +1,21 @@
 #include "Student.h"
 
-Student::Student(): PrislusnikUO()
+Student::Student() : PrislusnikUO()
 {
-	this->cisloStudenta = 0;
+	setCiloStudenta();
+	std::cout << "Prislusnik je studentem se studentskym cislem: " << cisloStudenta << std::endl;
 }
 
 Student::Student(std::string krestniJmeno, std::string prijmeni, std::string rodneCislo)
 {
-	setCiloStudenta(0); //automaticky generovane
+	setCiloStudenta();
 	std::cout << "Prislusnik je studentem se studentskym cislem: " << cisloStudenta << std::endl;
 }
 
-void Student::setCiloStudenta(int cisloStudenta)
+void Student::setCiloStudenta()
 {
-	this->cisloStudenta = 0; //automaticky generovane
+	studentInstances++;
+	cisloStudenta = (1970 + time(NULL) / 31537970) * 10000 + studentInstances;
 }
 
 int Student::getCisloStudenta()
