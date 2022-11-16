@@ -65,63 +65,6 @@ void GetMoney(int id,
     // acctLock.unlock();
 }
 
-int main1()
-{
-    std::thread threads[10];
-
-    for (int i = 0; i < 10; ++i) {
-        threads[i] = std::thread(GetMoney, i, 15);
-    }
-
-    for (int i = 0; i < 10; ++i) {
-        threads[i].join();
-    }
-
-
-
-    return 0;
-}
-
-
-void FindPrimes(unsigned int start,
-    unsigned int end,
-    std::vector<unsigned int>& vect) {
-
-    // Cycle through numbers while ignoring evens
-    for (unsigned int x = start; x <= end; x += 2) {
-        for (unsigned int y = 2; y < x; y++) {
-            if ((x % y) == 0) {
-                break;
-            }
-            else if ((y + 1) == x) {
-                vect.push_back(x);
-            }
-        }
-    }
-}
-
-int main2()
-{
-    std::vector<unsigned int> primeVect;
-
-    // Get time before code starts executing
-    int startTime = clock();
-
-    FindPrimes(1, 100000, primeVect);
-    for (auto i : primeVect)
-        std::cout << i << "\n";
-
-    // Get time after execution
-    int endTime = clock();
-
-    // Print out the number of seconds by taking the difference
-    // and dividing by the clock ticks per second
-    std::cout << "Execution Time : " <<
-        (endTime - startTime) / double(CLOCKS_PER_SEC)
-        << std::endl;
-
-    return 0;
-}
 
 
 // Used to protect writing to the vector
@@ -132,10 +75,10 @@ void FindPrimes2(unsigned int start,
     unsigned int end) {
 
     // Cycle through numbers while ignoring evens
-    for (unsigned int x = start; x <= end; x += 2) {
+    for (unsigned int x = start; x <= end; x ++) {
 
         // If a modulus is 0 we know it isn't prime
-        for (unsigned int y = 2; y < x; y++) {
+        for (unsigned int y = 2; y < x/2; y++) {
             if ((x % y) == 0) {
                 break;
             }
@@ -178,18 +121,46 @@ int main()
     // Get time before code starts executing
     int startTime = clock();
 
-    FindPrimesWithThreads(1, 100000, 3);
+    FindPrimes2(1, 100000);
 
     // Get time after execution
     int endTime = clock();
 
-    for (auto i : primeVect)
-        std::cout << i << "\n";
+    /*for (auto i : primeVect)
+        std::cout << i << "\n";*/
 
-    // Print out the number of seconds
-    std::cout << "Execution Time : " <<
+        // Print out the number of seconds
+    std::cout << "Execution Time single thread: " <<
         (endTime - startTime) / double(CLOCKS_PER_SEC)
         << std::endl;
+
+    primeVect.clear();
+
+    // Get time before code starts executing
+    startTime = clock();
+
+    FindPrimesWithThreads(1, 100000, 8);
+
+    // Get time after execution
+    endTime = clock();
+
+    /*for (auto i : primeVect)
+        std::cout << i << "\n";*/
+
+    // Print out the number of seconds
+    std::cout << "Execution Time Multithread: " <<
+        (endTime - startTime) / double(CLOCKS_PER_SEC)
+        << std::endl;
+
+    /*std::thread threads[10];
+
+    for (int i = 0; i < 10; ++i) {
+        threads[i] = std::thread(GetMoney, i, 15);
+    }
+
+    for (int i = 0; i < 10; ++i) {
+        threads[i].join();
+    }*/
 
     return 0;
 }

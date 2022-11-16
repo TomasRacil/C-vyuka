@@ -3,6 +3,7 @@
 #include <conio.h>
 #include <tchar.h>
 #include <iostream>
+#include <string>
 #pragma comment(lib, "user32.lib")
 
 #define BUF_SIZE 256
@@ -48,9 +49,42 @@ int _tmain()
 	std::string s = std::string(w.begin(), w.end());
 
 	std::cout << s;
-	std::cout<<"\nRetezec preneseny, sdilena pamet je totiz koherentni, co zapise jeden proces to hned vidi ten druhy \n";
+	//std::cout<<"\nRetezec preneseny, sdilena pamet je totiz koherentni, co zapise jeden proces to hned vidi ten druhy \n";
 
-	while (!_kbhit());
+	//while (!_kbhit());
+	//std::cout<<"\nObsah vypsan. Stiskni cokoliv pro ukonceni.\n";
+
+	bool run = true;
+	while (run) {
+		std::cout << "\nChces prijmout nebo poslat zpravu? (1 - prijmout, 2 - poslat, any key - ukoncit program)\n";
+		char option;
+		std::string msg;
+		std::wstring wmsg;
+		const wchar_t* wcstrmsg;
+		std::string top;
+		std::getline(std::cin, top);
+		option = top[0];
+		switch (option)
+		{
+		case '1':
+			w = pBuf;
+			s = std::string(w.begin(), w.end());
+			std::cout << s;
+			break;
+		case '2':
+			std::cout << "Zadej zpravu: ";
+			//std::cin >> msg;
+			std::getline(std::cin, msg);
+			wmsg = std::wstring(msg.begin(), msg.end());
+			wcstrmsg = wmsg.c_str();
+			//CopyMemory((PVOID)pBuf, wcstrmsg, BUF_SIZE);
+			CopyMemory((PVOID)pBuf, wcstrmsg, (_tcslen(wcstrmsg) * sizeof(TCHAR)));
+			break;
+		default:
+			run = false;
+			break;
+		}
+	}
 
     UnmapViewOfFile(pBuf);
 

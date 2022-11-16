@@ -24,6 +24,7 @@
     <ProjectGuid>{a57c5920-05fc-4464-8d2c-4ed8bc19ea6b}</ProjectGuid>
     <RootNamespace>ThreadsMutexBankAndPrimes</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>5_ThreadsMutexBankAndPrimes</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">

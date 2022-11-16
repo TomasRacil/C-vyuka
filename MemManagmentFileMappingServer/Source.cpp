@@ -3,10 +3,11 @@
 #include <conio.h>
 #include <tchar.h>
 #include <iostream>
+#include <string>
 
 #define BUF_SIZE 256
 TCHAR szName[] = TEXT("Global\\MyFileMappingObject");
-TCHAR szMsg[] = TEXT("Message from first process. Toto je zpráva z našeho serveru.");
+TCHAR szMsg[] = TEXT("Message from first process. Toto je zprava z naseho serveru.");
 
 int _tmain()
 {
@@ -18,7 +19,7 @@ int _tmain()
         INVALID_HANDLE_VALUE,    // use paging file
         NULL,                    // default security
         PAGE_READWRITE,          // read/write access
-        0,                       // maximum object size (high-order DWORD)
+        0,                       // minimum object size (high-order DWORD)
         BUF_SIZE,                // maximum object size (low-order DWORD)
         szName);                 // name of mapping object
 
@@ -50,8 +51,44 @@ int _tmain()
 	w = pBuf;
 	std::string s = std::string(w.begin(), w.end());
 	std::cout<< s;
-	std::cout<<"\nObsah vypsan. Stiskni cokoliv pro ukonceni.\n";
+	//std::cout<<"\nObsah vypsan. Stiskni cokoliv pro ukonceni.\n";
     
+	bool run = true;
+	while (run) {
+		std::cout << "\nChces prijmout nebo poslat zpravu? (1 - prijmout, 2 - poslat, any key - ukoncit program)\n";
+		char option;
+		
+		std::string top;
+		std::getline(std::cin, top);
+		option = top[0];
+
+		std::string msg;
+		std::wstring wmsg;
+		const wchar_t* wcstrmsg;
+
+		switch (option)
+		{
+		case '1':
+			w = pBuf;
+			s = std::string(w.begin(), w.end());
+			std::cout << s;
+			break;
+		case '2':
+			std::cout << "Zadej zpravu: ";
+			/*std::cin >> msg;*/
+			std::getline(std::cin, msg);
+			wmsg = std::wstring(msg.begin(), msg.end());
+			wcstrmsg = wmsg.c_str();
+			//CopyMemory((PVOID)pBuf, wcstrmsg, BUF_SIZE);
+			CopyMemory((PVOID)pBuf, wcstrmsg, (_tcslen(wcstrmsg) * sizeof(TCHAR)));
+			break;
+		default:
+			run = false;
+			break;
+		}
+	}
+
+
 	_getch();
     UnmapViewOfFile(pBuf);
 
