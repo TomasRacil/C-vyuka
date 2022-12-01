@@ -22,6 +22,20 @@ Matrix::Matrix(int rows, int cols, bool random)
 	if (random) fillRandomly();
 }
 
+//Move constructor might be necessary. If compilator is unable to properly handle it itself.
+Matrix::Matrix(Matrix&& o)
+{
+	rows = o.rows;
+	cols = o.cols;
+	arr = new int* [rows];
+	for (int i = 0; i < rows; ++i) {
+		arr[i] = new int[cols];
+		for (int j = 0; j < cols; j++) {
+			arr[i][j] = o.arr[i][j];
+		}
+	}
+}
+
 void Matrix::show()
 {
 	for (int i = 0; i < rows; i++) {
@@ -106,7 +120,6 @@ Matrix::~Matrix()
 
 std::ostream& operator<<(std::ostream& out, const Matrix& m)
 {
-	// TODO: insert return statement here
 	/*out << getName(m) << ": \n";*/
 	for (int i = 0; i < m.rows; i++) {
 		for (int j = 0; j < m.cols; j++) {

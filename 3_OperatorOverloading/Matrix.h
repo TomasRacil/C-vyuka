@@ -13,6 +13,7 @@ private:
 	void fillRandomly();
 public:
 	Matrix(int rows, int cols , bool random = true);
+	Matrix(Matrix&&);
 	void show();
 	Matrix operator + (Matrix const& obj);
 	Matrix operator - (Matrix const& obj);
