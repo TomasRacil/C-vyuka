@@ -8,6 +8,7 @@ private:
 public:
 	ContactBook();
 	void print();
+	void append(Contact contact)
 	ContactBook find_by_surname(std::string surname);
 	ContactBook find_by_forename(std::string forename);
 	ContactBook find_by_telephone(int telephone);
