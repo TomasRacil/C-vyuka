@@ -16,7 +16,7 @@ public:
 };
 
 void print(Person per) {
-    std::cout << per.name << " is " << per.age << "vyears old" << std::endl;
+    std::cout << per.name << " is " << per.age << " years old" << std::endl;
 }
 
 int main()

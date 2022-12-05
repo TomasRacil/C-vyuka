@@ -17,12 +17,20 @@ public:
         res.imag = imag + obj.imag;
         return res;
     }
+
+    bool operator == (Complex const& obj) {
+        if (real == obj.real && imag == obj.imag) {
+            return true;
+        }
+        return false;
+    }
     void print() { std::cout << real << " + " << imag << "i" << '\n'; }
 };
 
 int main()
 {
-    Complex c1(10, 5), c2(2, 4);
+    Complex c1(10, 5), c2(10, 5);
     Complex c3 = c1 + c2;
     c3.print();
+    std::cout << c1;
 }

@@ -29,7 +29,7 @@ public:
 std::ostream& operator << (std::ostream& out, const Complex& c)
 {
     out << c.real;
-    out << " + " << c.imag << "i" << std::endl;
+    out << " + " << c.imag << "i" ;
     return out;
 }
 
@@ -44,9 +44,10 @@ std::istream& operator >> (std::istream& in, Complex& c)
 
 int main()
 {
-    Complex c1;
+    Complex c1,c2;
     std::cin >> c1;
-    std::cout << c1 << std::endl;
+    std::cin >> c2;
+    std::cout << c1 << "\n" << c2 << std::endl;
 }
 
 
