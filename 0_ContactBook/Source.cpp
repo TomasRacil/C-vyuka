@@ -2,10 +2,28 @@
 //
 
 #include <iostream>
+#include <string>
+#include <list>
+#include <algorithm>
+#include "Contact.h"
+#include "ContactBook.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+
+
+    ContactBook contacts;
+    contacts.load("contacts");
+    contacts.print();
+    
+   /* contacts.find_by_surname("N").print();
+    contacts.find_by_forename("J").print();
+    contacts.find_by_telephone("1").print();*/
+
+    /*contacts.remove(jakub);
+    contacts.print();*/
+
+    contacts.save("contacts");
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu

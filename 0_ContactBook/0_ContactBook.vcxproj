@@ -127,13 +127,16 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="0_ContactBook.cpp" />
+    <ClCompile Include="Source.cpp" />
     <ClCompile Include="Contact.cpp" />
     <ClCompile Include="ContactBook.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Contact.h" />
     <ClInclude Include="ContactBook.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="contacts.csv" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
