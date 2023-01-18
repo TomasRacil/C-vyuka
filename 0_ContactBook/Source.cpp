@@ -2,26 +2,34 @@
 //
 
 #include <iostream>
-#include <string>
-#include <list>
-#include <algorithm>
 #include "Contact.h"
 #include "ContactBook.h"
+#include <queue>
 
 int main()
 {
-
-
     ContactBook contacts;
     contacts.load("contacts");
-    contacts.print();
+    //contacts.print();
     
-   /* contacts.find_by_surname("N").print();
-    contacts.find_by_forename("J").print();
-    contacts.find_by_telephone("1").print();*/
 
-    /*contacts.remove(jakub);
-    contacts.print();*/
+    contacts.find("ne").print();
+
+
+    /*std::queue<Contact> call_queue;
+    ContactBook temp = contacts.find_by_surname("mc");
+    for (Contact con: temp.book) {
+        call_queue.push(con);
+    }
+    ContactBook temp2 = contacts.find_by_forename("j");
+    for (Contact con : temp2.book) {
+        call_queue.push(con);
+    }
+        
+    while (!call_queue.empty()) {
+        std::cout << "Calling: " << call_queue.front() << std::endl;
+        call_queue.pop();
+    }*/
 
     contacts.save("contacts");
 }

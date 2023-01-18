@@ -4,16 +4,18 @@
 #include <iostream>
 #include <algorithm>
 #include <sstream>
+#include <regex>
 
 class ContactBook
 {
-private:
-	std::list<Contact> book;
 public:
+	std::list<Contact> book;
+
 	ContactBook();
 	void print();
 	void append(Contact contact);
 	void load(std::string file);
+	ContactBook find(std::string searched);
 	ContactBook find_by_surname(std::string surname);
 	ContactBook find_by_forename(std::string forename);
 	ContactBook find_by_telephone(std::string telephone);

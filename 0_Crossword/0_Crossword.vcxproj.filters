@@ -18,5 +18,34 @@
     <ClCompile Include="1_Crossword.cpp">
       <Filter>Zdrojové soubory</Filter>
     </ClCompile>
+    <ClCompile Include="Crossword.cpp">
+      <Filter>Zdrojové soubory</Filter>
+    </ClCompile>
+    <ClCompile Include="sqlite3.c">
+      <Filter>Zdrojové soubory</Filter>
+    </ClCompile>
+    <ClCompile Include="DB.cpp">
+      <Filter>Zdrojové soubory</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="clues.tsv">
+      <Filter>Soubory zdrojů</Filter>
+    </None>
+    <None Include="packages.config" />
+    <None Include="clues_test.tsv">
+      <Filter>Soubory zdrojů</Filter>
+    </None>
+    <None Include="clues_test2.tsv">
+      <Filter>Soubory zdrojů</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Crossword.h">
+      <Filter>Hlavičkové soubory</Filter>
+    </ClInclude>
+    <ClInclude Include="DB.h">
+      <Filter>Hlavičkové soubory</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

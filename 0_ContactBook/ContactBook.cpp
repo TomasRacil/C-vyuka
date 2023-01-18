@@ -49,6 +49,21 @@ void ContactBook::load(std::string file)
 	myfile.close();
 }
 
+ContactBook ContactBook::find(std::string searched)
+{
+	ContactBook matches;
+	std::copy_if(book.begin(), book.end(), std::back_inserter(matches.book), [&](Contact contact) {
+	std::regex r(searched);
+	bool forename = std::regex_search(contact.forename, r);
+	bool surename = std::regex_search(contact.surname, r);
+	bool telephone = std::regex_search(contact.telephone, r);
+	if (std::regex_search(contact.forename, r) || std::regex_search(contact.surname, r) || std::regex_search(contact.telephone, r))
+		return true;
+	return false;
+		});
+	return  matches;
+}
+
 ContactBook ContactBook::find_by_surname(std::string searched)
 {
 	ContactBook matches;
