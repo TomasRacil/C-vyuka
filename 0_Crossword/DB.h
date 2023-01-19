@@ -17,7 +17,8 @@ public:
 	void createTables();
 	void fillDB(std::string path);
 	void getRows();
-	std::vector<std::tuple<std::string, std::string>> getPosibleWords(std::string pattern);
+	std::vector<std::tuple<std::string, std::string>> getPosibleWords(std::string patterns);
+	void createViewWithAllWords(std::vector<std::string> patterns);
 	//void deleteData(); // use prior to insert
 
 	//void insertData(std::string word, std::string clue); // uncomment the deleteData above to avoid duplicates

@@ -1,5 +1,6 @@
 #include "Crossword.h"
 
+
 Crossword::Crossword(int cols, int rows, std::string secret)
 {
 	this->cols = cols;
@@ -8,20 +9,57 @@ Crossword::Crossword(int cols, int rows, std::string secret)
 	for (int i = 0; i < rows; i++) {
 		this->crossword[i] = new char[cols];
 		for (int j = 0; j < cols; j++)
-			this->crossword[i][j] = '_';
+			if (i==0 ||j==0)
+				this->crossword[i][j] = '#';
+			else
+				this->crossword[i][j] = '_';
 	}
 	this->emplaceSecret(secret);
-}
-Crossword::Crossword(int cols, int rows, char ** crossword)
-{
-	this->cols = cols;
-	this->rows = rows;
-	this->crossword = new char* [rows];
+	clues.insert({ 0, "Tajenka" });
+	std::default_random_engine generator;
+	std::normal_distribution<float> distribution(9.2, 9.7);
 	for (int i = 0; i < rows; i++) {
-		this->crossword[i] = new char[cols];
 		for (int j = 0; j < cols; j++)
-			this->crossword[i][j] = crossword[i][j];
+			if (this->crossword[i][j] == '_') {
+				auto const& [left, right] = getFreeRow(i,j);
+				auto const& [up, down] = getFreeCol(i, j);
+				if ((int)distribution(generator)>left && left>2 &&
+					(int)distribution(generator)>right && right > 2 &&
+					(int)distribution(generator)>up && up > 2&&
+					(int)distribution(generator)>down && down > 2
+					) {
+					this->crossword[i][j] = '#';
+				}
+			}		
 	}
+}
+Crossword::Crossword(const Crossword& obj)
+{
+	this->cols = obj.cols;
+	this->rows = obj.rows;
+	this->crossword = new char* [this->rows];
+	for (int i = 0; i < this->rows; i++) {
+		this->crossword[i] = new char[this->cols];
+		for (int j = 0; j < this->cols; j++)
+			this->crossword[i][j] = obj.crossword[i][j];
+	}
+	std::map<int, std::string>::const_iterator it = obj.clues.begin();
+	while (it != obj.clues.end())
+	{
+		this->clues[it->first] = it->second;
+		++it;
+	}
+}
+
+bool Crossword::completed()
+{
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < cols; j++) {
+			if (this->crossword[i][j] == '_')
+				return false;
+		}
+	}
+	return true;
 }
 
 void Crossword::emplaceSecret(std::string secret)
@@ -40,134 +78,136 @@ void Crossword::emplaceSecret(std::string secret)
 		else i++;
 	}
 }
-int Crossword::countEmpty() {
-	int empty = 0;
-	for (int i = 0; i < rows; i++) {
-			for (int j = 0; j < cols; j++)
-				if (this->crossword[i][j] != ' ') {
-					empty += 1;
-				};
-		}
-	return empty;
+std::tuple<int,int> Crossword::getFreeRow(int row, int col) {
+	int sumR = 0, sumL = 0;
+	for (int i = col; i < this->cols; i++) {
+		if (this->crossword[row][i] == '_') sumR += 1;
+		else break;
+	}
+	for (int i = col; i >= 0; i--) {
+		if (this->crossword[row][i] == '_') sumL += 1;
+		else break;
+	}
+	return std::make_tuple(sumL,sumR);
 }
-//char** Crossword::copy() {
-//	char ** crossword_copy = new char* [rows];
-//	for (int i = 0; i < rows; i++) {
-//		crossword_copy[i] = new char[cols];
-//		for (int j = 0; j < cols; j++)
-//			crossword_copy[i][j] = this->crossword[i][j];
-//	}
-//}
+std::tuple<int, int> Crossword::getFreeCol(int row, int col) {
+	int sumD = 0, sumU = 0;
+	for (int i = row; i < this->rows; i++) {
+		if (this->crossword[i][col] == '_') sumD += 1;
+		else break;
+	}
+	for (int i = row; i >= 0; i--) {
+		if (this->crossword[i][col] == '_') sumU += 1;
+		else break;
+	}
+	return std::make_tuple(sumU, sumD);
+}
 
-//void Crossword::fill()
-//{
-//	const auto [row, col] = getBestCandidate();
-//	std::cout << row << " " << col << std::endl;
-//	std::string horizontal = getFreePlacesRow(row, col);
-//	std::string vertical = getFreePlacesCol(row, col);
+//std::tuple<int, int> Crossword::getBestCandidate() {
+//	int col, row, val=rows;
+//	for (int i = 1; i < rows-1; i++) {
+//		for (int j = 1; j < cols-1; j++) {
+//			if (crossword[i][j] != '_' && crossword[i][j] != '#') {
+//				std::string horizontal = getFreePlacesRow(i, j);
+//				std::string vertical = getFreePlacesCol(i, j);
 //
-//	std::cout<<horizontal<<std::endl;
-//	std::cout << vertical << std::endl;
-//	if (std::count(horizontal.begin(), horizontal.end(), '_') > std::count(vertical.begin(), vertical.end(), '_') && horizontal.find('_') != std::string::npos) {
-//		//horizotal
-//		auto words = db.getPosibleWords(horizontal);
-//		if (words.empty()) {
-//			//backtrack
-//		}
-//		else {
-//			for (std::tuple<std::string,std::string> word : words) {
-//				auto [word, clue] = word;
-//				int idx = horizontal.find(crossword[row][col]);
-//				int x = 0;
-//				for (char ch : "#" + word + "#") {
-//					crossword[row][col - idx - 1 + x] = ch;
-//					x++;
-//			}
+//				int h = std::count(horizontal.begin(), horizontal.end(), '_');
+//				int v = std::count(vertical.begin(), vertical.end(), '_');
+//
+//				if (val > (v+h) && (horizontal.find('_') != std::string::npos || vertical.find('_') != std::string::npos)) {
+//					val = v+h;
+//					row = i, col = j;
+//				}
+//
+//				
 //			}
 //		}
 //	}
-//	else if (vertical.find('_') != std::string::npos) {
-//		//vertical
-//		auto words = db.getPosibleWords(vertical);
-//		if (words.empty()) {
-//			//backtrack
-//		}
-//		else {
-//			auto [word, clue] = words[0];
-//			int idx = vertical.find(crossword[row][col]);
-//			int x = 0;
-//			for (char ch : "#" + word + "#") {
-//				crossword[row - idx - 1 + x][col] = ch;
-//				x++;
-//			}
-//		}
-//		
-//	}
-//	
+//	return std::make_tuple(row, col);
 //}
 
-std::tuple<int, int> Crossword::getBestCandidate() {
-	int col, row, val=rows;
-	for (int i = 1; i < rows-1; i++) {
-		for (int j = 1; j < cols-1; j++) {
-			if (crossword[i][j] != '_' && crossword[i][j] != '#') {
-				std::string horizontal = getFreePlacesRow(i, j);
-				std::string vertical = getFreePlacesCol(i, j);
-
-				int h = std::count(horizontal.begin(), horizontal.end(), '_');
-				int v = std::count(vertical.begin(), vertical.end(), '_');
-
-				if (val > (v+h) && (horizontal.find('_') != std::string::npos || vertical.find('_') != std::string::npos)) {
-					val = v+h;
-					row = i, col = j;
+std::vector<std::string> Crossword::getAllPatterns()
+{
+	std::vector<std::string> output;
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < cols; j++) {
+			if (this->crossword[i][j] == '#') {
+				if (this->crossword[i][(j+1 < cols) ? j+1 : cols - 1] != '#') {
+					auto const& [pattern, pos] = getPatternRow(i, j + 1);
+					if (pattern != "")
+						output.push_back(pattern);
 				}
-
-				
+				if (this->crossword[(i+1 < rows) ? i + 1 : rows - 1][j] != '#') {
+					auto const& [pattern, pos] = getPatternCol(i + 1, j);
+					if (pattern != "")
+						output.push_back(pattern);
+				}
 			}
 		}
 	}
-	return std::make_tuple(row, col);
+	return output;
 }
 
-std::string Crossword::getFreePlacesRow(int row, int col) {
-	std::string right , left;
-	for (int c = col+1; c < this->cols-1; c++) {
-		if (crossword[row][c] == '#') {
-			break;
-		}
-		else {
-			right += crossword[row][c];
-		}
-	}
-	for (int c = col-1; c > 0; c--) {
-		if (crossword[row][c] == '#') {
-			break;
-		}
-		else {
-			left = crossword[row][c] + left;
+std::vector<std::tuple<std::string, int, int, char, int>> Crossword::getAllPosiblePatterns()
+{
+	std::vector<std::tuple<std::string, int, int, char, int>> posiblePatterns;
+	for (int i = 0; i < rows; i++) {
+		for (int j = 0; j < cols; j++) {
+			if (this->crossword[i][j] != '_' && this->crossword[i][j] != '#') {
+				auto const& [row_pattern, r_pos] = getPatternRow(i, j);
+				auto const& [col_pattern, c_pos] = getPatternCol(i, j);
+				if (row_pattern.length() > 0) posiblePatterns.push_back(std::make_tuple(row_pattern, i, j, 'r', r_pos));
+				if (col_pattern.length() > 0) posiblePatterns.push_back(std::make_tuple(col_pattern, i, j, 'c', c_pos));
+			}
 		}
 	}
-	return left + crossword[row][col] + right;
+	return posiblePatterns;
 }
-std::string Crossword::getFreePlacesCol(int row, int col) {
+
+std::tuple<std::string,int> Crossword::getPatternRow(int row, int col) {
+	std::string right , left;
+	for (int c = col+1; c < this->cols; c++) {
+		if (crossword[row][c] == '#') break;
+		else right += crossword[row][c];
+	}
+	for (int c = col-1; c >= 0; c--) {
+		if (crossword[row][c] == '#') break;
+		else left = crossword[row][c] + left;
+	}
+	std::string output = left + crossword[row][col] + right;
+	if (std::count(output.begin(), output.end(), '_') == 0) return std::make_tuple("", 0);
+	return make_tuple(output, left.length());
+}
+std::tuple<std::string, int> Crossword::getPatternCol(int row, int col) {
 	std::string down , up ;
-	for (int r = row+1; r < this->rows-1; r++) {
-		if (crossword[r][col] == '#') {
-			break;
+	for (int r = row+1; r < this->rows; r++) {
+		if (crossword[r][col] == '#') break;
+		else down += crossword[r][col];
+	}
+	for (int r = row-1; r >= 0; r--) {
+		if (crossword[r][col] == '#') break;
+		else up = crossword[r][col] + up;
+	}
+	std::string output = up + crossword[row][col] + down;
+	if (std::count(output.begin(), output.end(), '_') == 0) return std::make_tuple("", 0);
+	return make_tuple(output, up.length());
+}
+
+void Crossword::add_word(std::string word, std::string clue, int row, int col, char direction, int pos)
+{
+	int idx = 0;
+	for (char c : word) {
+		if (direction == 'r') {
+			this->crossword[row][col - pos + idx] = c;
 		}
 		else {
-			down += crossword[r][col];
+			this->crossword[row - pos + idx][col ] = c;
 		}
+		
+		idx++;
 	}
-	for (int r = row-1; r > 0; r--) {
-		if (crossword[r][col] == '#') {
-			break;
-		}
-		else {
-			up = crossword[r][col] + up;
-		}
-	}
-	return up + crossword[row][col] + down;
+	/*int id = clues.end()->first;
+	this->clues.insert({ id + 1,clue });*/
 }
 	
 Crossword::~Crossword()

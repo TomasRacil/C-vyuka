@@ -7,10 +7,11 @@
 #include "DB.h"
 
 #include <chrono>
+#include <random>
 
 using namespace std;
 
-Crossword fillCroswordRecursion(Crossword recurive);
+void fillCroswordRecursion(Crossword crossword_in);
 
 int main()
 {
@@ -25,87 +26,40 @@ int main()
 
 	Crossword test(cols, rows, secret); 
 
-	cout << test;
-	/*int x;
-	while (true){
-		cout << test;
-		test.fill();
-		cin >> x;
-	}*/
-	
-
-	/*db.getRows();
-	db.createDB();
-	db.createTables();
+	cout << test << endl;
+	cout << test.completed();
+	std::vector<std::string> t = test.getAllPatterns();
+	DB db(R"(c:\DeleteMe\CROSSWORD.db)");
+	db.createViewWithAllWords(t);
 	db.getRows();
-	auto start = std::chrono::high_resolution_clock::now();
-	db.fillDB("clues.tsv");
-	auto stop = std::chrono::high_resolution_clock::now();
-	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
-	cout << duration.count() << endl;
-	db.getRows();*/
-
-	/*auto start = std::chrono::high_resolution_clock::now();
-	db.getPosibleWords("_Y____");
-	auto stop = std::chrono::high_resolution_clock::now();
-	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
-	cout << duration.count() << endl;*/
-
-	return 0;
+	//fillCroswordRecursion(test);
 
 	
-	
+
+	return 0;	
 }
 
-
-
-//fill db
-/*std::ifstream file("clues.tsv", std::ios::binary | std::ios::ate);
-	std::streamsize size = file.tellg();
-	file.seekg(0, std::ios::beg);
-	std::vector<char> buffer(size);
-	std::map<std::string, list<std::string>> dict;
-	if (file.read(buffer.data(), size))
-	{
-	}
-	int row = 0;
-	int col = 0;
-	std::string word, clue;
-	for (char ch : buffer) {
-		if (row != 0) {
-			if (ch == '\t') {
-				col++;
-			}
-			else if (ch == '\n') {
-				col = 0;
-				row++;
-				if (!word.empty()) {
-					word.shrink_to_fit();
-					clue.shrink_to_fit();
-					dict[word].push_back(clue);
-					word.clear();
-					clue.clear();
+void fillCroswordRecursion(Crossword crossword_in)
+{
+	
+	std::vector<std::tuple <string,int,int,char, int>> all_posible_paterns = crossword_in.getAllPosiblePatterns();
+	for (auto const& [pattern, row, col, direction, pos] : all_posible_paterns) {
+		DB db(R"(c:\DeleteMe\CROSSWORD.db)");
+		std::vector<tuple<string,string>> posible_words = db.getPosibleWords(pattern);
+		std::system("CLS");
+		std::cout << crossword_in << std::endl;
+		if (posible_words.size() != 0) {
+			for (auto const& [word, clue] : posible_words) {
+				Crossword crossword_out(crossword_in);
+				crossword_out.add_word(word, clue, row, col, direction, pos);
+				if (crossword_out.completed()) {
+					std::cout << crossword_out << std::endl;
 				}
-
+				else {
+					fillCroswordRecursion(crossword_out);
+				}
 			}
-			else {
-				if (col == 2)
-					word += ch;
-				else if (col == 3)
-					clue += ch;
-			}
-
 		}
-		else if (ch == '\n') {
-			row++;
-		}
+		else break;
 	}
-	buffer.clear();
-	buffer.shrink_to_fit();*/
-
-//Crossword fillCroswordRecursion(Crossword recursive)
-//{
-//	auto [row, col] = recursive.getBestCandidate();
-//	std::string horizontal = recursive.getFreePlacesRow(row, col), vertival = recursive.getFreePlacesCol(row, col);
-//	return Crossword();
-//}
+}

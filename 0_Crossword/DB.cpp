@@ -164,7 +164,7 @@ void DB::getRows()
 	char* messageError;
 	int exit = sqlite3_open(this->dir.c_str(), &DB);
 
-	std::string sql("SELECT COUNT(*) FROM word;");
+	std::string sql("SELECT COUNT(*) FROM posible_words;");
 	exit = sqlite3_exec(DB, sql.c_str(), callback, NULL, &messageError);
 	
 }
@@ -193,4 +193,32 @@ std::vector<std::tuple<std::string,std::string>> DB::getPosibleWords(std::string
 		 std::cout << "Search error" << std::endl;
 	 }
 	 return posible_words;
+}
+void DB::createViewWithAllWords(std::vector<std::string> patterns) {
+
+	sqlite3* DB;
+	std::string selectQuery = "CREATE VIEW posible_words AS  SELECT word, clue FROM word WHERE (";
+	for (std::string pattern : patterns) {
+		selectQuery += "word LIKE '" + pattern + "' OR ";
+	}
+	selectQuery = selectQuery.substr(0, selectQuery.length() - 3) + ");";
+	try
+	{
+		int exit = 0;
+		char* messageError;
+		exit = sqlite3_open(this->dir.c_str(), &DB);
+		/* An open database, SQL to be evaluated, Callback function, 1st argument to callback, Error msg written here */
+		exit = sqlite3_exec(DB, selectQuery.c_str(), NULL, 0, &messageError);
+		if (exit != SQLITE_OK) {
+			std::cerr << "Error in createTable function." << std::endl;
+			sqlite3_free(messageError);
+		}
+		else
+			std::cout << "Table created Successfully" << std::endl;
+		sqlite3_close(DB);
+	}
+	catch (const std::exception& e)
+	{
+		std::cerr << e.what();
+	}
 }
