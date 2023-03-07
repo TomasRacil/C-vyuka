@@ -1,0 +1,30 @@
+Launch
+2023 3 1 12 0
+2023 3 1 13 0
+Canteen
+Enjoy your meal.
+
+Launch
+2023 3 2 12 0
+2023 3 2 13 0
+Canteen
+Enjoy your meal.
+
+Presentation
+2023 3 2 14 0
+2023 3 2 16 15
+S9A/67
+Complete projects and tasks
+
+Exam
+2023 3 2 15 30
+2023 3 2 19 30
+S9A/67
+Information technology exam. Prepare yourself well
+
+Exam
+2023 3 4 8 0
+2023 3 4 12 0
+S9A/67
+Math exam. Prepare yourself well
+
