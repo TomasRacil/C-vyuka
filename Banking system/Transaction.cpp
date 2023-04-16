@@ -1,4 +1,5 @@
 #include "Transaction.h"
+#include "Training.h"
 
 Transaction::Transaction(int from, int to, int amount, Date date)
 {

@@ -187,6 +187,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ReminderSystem", "ReminderS
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Banking system", "Banking system\Banking system.vcxproj", "{C7D7E1AD-0EC9-4A26-AD2A-3A0F9F347EE4}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ExerciseCompanion", "ExerciseCompanion\ExerciseCompanion.vcxproj", "{50EDF5F3-67B5-43A5-BC4E-C8CE4D719688}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -787,6 +789,14 @@ Global
 		{C7D7E1AD-0EC9-4A26-AD2A-3A0F9F347EE4}.Release|x64.Build.0 = Release|x64
 		{C7D7E1AD-0EC9-4A26-AD2A-3A0F9F347EE4}.Release|x86.ActiveCfg = Release|Win32
 		{C7D7E1AD-0EC9-4A26-AD2A-3A0F9F347EE4}.Release|x86.Build.0 = Release|Win32
+		{50EDF5F3-67B5-43A5-BC4E-C8CE4D719688}.Debug|x64.ActiveCfg = Debug|x64
+		{50EDF5F3-67B5-43A5-BC4E-C8CE4D719688}.Debug|x64.Build.0 = Debug|x64
+		{50EDF5F3-67B5-43A5-BC4E-C8CE4D719688}.Debug|x86.ActiveCfg = Debug|Win32
+		{50EDF5F3-67B5-43A5-BC4E-C8CE4D719688}.Debug|x86.Build.0 = Debug|Win32
+		{50EDF5F3-67B5-43A5-BC4E-C8CE4D719688}.Release|x64.ActiveCfg = Release|x64
+		{50EDF5F3-67B5-43A5-BC4E-C8CE4D719688}.Release|x64.Build.0 = Release|x64
+		{50EDF5F3-67B5-43A5-BC4E-C8CE4D719688}.Release|x86.ActiveCfg = Release|Win32
+		{50EDF5F3-67B5-43A5-BC4E-C8CE4D719688}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -871,6 +881,7 @@ Global
 		{E0AE0118-1811-4A37-8D07-C7643F0283A0} = {EA4AE546-C070-4772-8444-09CBDC510B56}
 		{7E2F6195-5D7E-4B8D-A3B9-5257FF345992} = {EA4AE546-C070-4772-8444-09CBDC510B56}
 		{C7D7E1AD-0EC9-4A26-AD2A-3A0F9F347EE4} = {EA4AE546-C070-4772-8444-09CBDC510B56}
+		{50EDF5F3-67B5-43A5-BC4E-C8CE4D719688} = {EA4AE546-C070-4772-8444-09CBDC510B56}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {0D2358D6-B874-4119-B484-E868F0308E24}
