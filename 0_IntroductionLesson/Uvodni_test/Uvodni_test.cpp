@@ -10,10 +10,10 @@ using namespace std;
 
 void task_1(int f_len, int fl_len) {
     /*
-    * Fuknkce vypisuje èísla od 0 do 100. 
-    * Pokud narazí na èíslo, které je násobkem poètu písmen ve vašem køestním jménì vynechá toto èíslo. 
-    * Pokud narazí na èíslo, které je násobkem poètu písmen souètu vašeho køestního jména a pøíjmení, vypíše dvojnásobek tohoto èísla. 
-    * Pokud jsou obì podmínky splnìny vypíše 'X'.
+    * Fuknkce vypisuje cisla od 0 do 100. 
+    * Pokud narazi na cislo, ktere je nasobkem poctu pismen ve vasem krestnim jmenu vynecha toto cislo. 
+    * Pokud narazi na cislo, ktere je nasobkem poctu pismen souctu vaseho krestniho jmena a prijmeni, vypise dvojnasobek tohoto cisla. 
+    * Pokud jsou obe podminky splneny vypise 'X'.
     */
     for (int i = 0; i <= 100; i++) {
 
@@ -69,7 +69,7 @@ int factorial(int num) {
     * Funkce pocita rekurzivne faktorial.    
     */
     if (num < 0) {
-        cout << "Není definován.\n";
+        cout << "Nenï¿½ definovï¿½n.\n";
         return NULL;
     }
     else if (num == 1 || num ==0) {
@@ -151,6 +151,6 @@ int main()
 
     cout << "Zadej ciso pro spocitani faktorialu: ";
     cin >> num;
-    cout << "Faktorial je: "<<factorial(num);
+    cout << "Faktorial je: "<<factorial(num) <<endl;
 }
 

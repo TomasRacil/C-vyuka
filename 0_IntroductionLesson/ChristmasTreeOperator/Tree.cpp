@@ -8,8 +8,8 @@ using namespace std;
 string operator*(std::string s, size_t n)
 {
 	/*
-	* operátor umožòující násobení øetìzcù 
-	* vrací øetìzec s n-krát
+	* operator umoznujici nasobeni retezce 
+	* vraci retezec s n-krat
 	*/
 	string ret;
 	for (size_t i = 0; i < n; ++i)
