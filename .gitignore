@@ -364,3 +364,8 @@ FodyWeavers.xsd
 /0_Crossword/clues_test2.tsv
 /0_Crossword/clues_test.tsv
 /0_Crossword/clues.tsv
+
+#Visual Studion project files
+*.sln
+*.vcxproj
+*.vcxproj.filters
