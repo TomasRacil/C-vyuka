@@ -16,8 +16,10 @@ void changePersonAge(Person* person, int age);
 int main()
 {
     Person person1;
-    sprintf_s(person1.first_name, 20, "Pepa");
-    sprintf_s(person1.last_name, 20, "Omacka");
+    cout << "Person 1: first name" << person1.first_name << endl;
+    cout << "Person 1: last name" <<person1.last_name<< endl;
+    // sprintf_s(person1.first_name, 20, "Pepa");
+    // sprintf_s(person1.last_name, 20, "Omacka");
     person1.age = 20;
 
     Person person2 = {

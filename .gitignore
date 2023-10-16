@@ -369,3 +369,8 @@ FodyWeavers.xsd
 *.sln
 *.vcxproj
 *.vcxproj.filters
+
+#Binary files
+*
+!/**/
+!*.*
