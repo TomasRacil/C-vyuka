@@ -12,12 +12,15 @@ int main()
     std::vector<int> v{ 1,2,3,4,5,6 };
     
     for (int i : a) {
-        std::cout << i << std::endl;
+        std::cout << i<<",";
     }
+    std::cout<<std::endl;
     for (int i : l) {
-        std::cout << i << std::endl;
+        std::cout << i <<",";
     }
+    std::cout<<std::endl;
     for (int i : v) {
-        std::cout << i << std::endl;
+        std::cout << i << ",";
     }
+    std::cout<<v[5];
 }
