@@ -1,0 +1,5 @@
+Ktere mesto je nejvetsi?;Brno;Praha;Olomouc;b
+Ktere mesto je nejmensi?;Brno;Praha;Olomouc;c
+Ktere mesto je nejvychodneji?;Brno;Praha;Olomouc;c
+Ktere mesto je hlavni?;Brno;Praha;Olomouc;b
+Ktere mesto je nejlepsi?;Brno;Praha;Olomouc;a
