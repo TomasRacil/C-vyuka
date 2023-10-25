@@ -29,10 +29,15 @@ int main(){
 
 	for (int i = 0; i < cisla.size(); i++)
 	{
-		cout<<cisla[i]<<", ";
-		for (int j = 0; j < cisla.size(); j++)
+		// cout<<cisla[i]<<", ";
+		for (int j = i+1; j < cisla.size(); j++)
 		{
-			/* code */
+			int soucet = cisla[i]+cisla[j];
+			if(soucet==2020) cout<<cisla[i]<<"*"<<cisla[j]<< "=" << cisla[i]*cisla[j] <<endl;
+			
+			for (int k = j+1; k < cisla.size(); k++){
+				if (soucet+cisla[k]==2020) cout<<cisla[i]<<"*"<<cisla[j] << "*" << cisla[k] << "=" << cisla[i]*cisla[j]*cisla[k]  <<endl;
+			}
 		}
 		
 	}

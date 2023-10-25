@@ -55,12 +55,12 @@ int sum(int a, int b) {
 
 bool ascendigCompare(int a, int b)
 {
-    return a<b;
+    return a>b;
 }
 
 bool descendingCompare(int a, int b)
 {
-    return a>b;
+    return a<b;
 }
 
 void ascendingSort(int* array, int size)

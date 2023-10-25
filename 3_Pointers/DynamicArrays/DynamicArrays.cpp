@@ -7,11 +7,12 @@ using namespace std;
 
 int main()
 {
-    //int myArray[5];
+    
     int size;
     cout << "Size: ";
     cin >> size;
 
+    //int myArray[size];
     int* myArray = new int[size];
 
     for (int i = 0; i < size; i++) {
