@@ -124,5 +124,5 @@ void Lod::rotace(char smer, int hodnota){
 }
 
 void Lod::tisk_souradnic(){
-    
+    cout<<abs(sever)+abs(vychod);
 }
