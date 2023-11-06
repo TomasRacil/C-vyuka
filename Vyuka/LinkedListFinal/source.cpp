@@ -27,18 +27,18 @@ struct Node
 
 int main()
 {
-    Node <string> LL;
-    LL.val = "t0";
+    Node <int> LL;
+    LL.val = 0;
     LL.next = NULL;
 
-    LL.push_back_val("t1");
-    LL.push_back_val("t2");
-    LL.push_back_val("t3");
+    LL.push_back_val(1);
+    LL.push_back_val(2);
+    LL.push_back_val(3);
 
     LL.print_LL();
     LL[1]->print_node();
 
-    LL.insert_val(2,"t4");
+    LL.insert_val(2,4);
     LL.delete_node(3);
     LL.print_LL();	
 }
@@ -83,7 +83,7 @@ template<typename T>
 void Node<T>::delete_node(int idx){
     Node* node_to_erase = (*this)[idx];
     (*this)[idx-1]->next = node_to_erase->next;
-    node_to_erase->val= decltype(T);
+    node_to_erase->val= NULL;
     node_to_erase->next=NULL;
     delete node_to_erase;
 }
