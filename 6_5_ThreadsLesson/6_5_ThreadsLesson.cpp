@@ -29,8 +29,8 @@ std::vector<int> findPrimesNonThreaded(int start, int end) {
     return primes;
 }
 
-void findPrimesThreaded(int start, int end, std::vector<int>* primes, std::mutex* mtx) {
-    for (int num = start; num < end; ++num) {
+void findPrimesThreaded(int start, int end, int step, std::vector<int>* primes, std::mutex* mtx) {
+    for (int num = start; num < end; num+=step) {
         if (isPrime(num)) {
             mtx->lock();
             primes->push_back(num);
@@ -44,11 +44,10 @@ std::vector<int> generatePrimesConcurrently(int numThreads, int maxNum) {
     std::vector<int> primes;
     std::mutex mtx;
 
-    int step = maxNum / numThreads;
+    int step = numThreads;
     for (int i = 0; i < numThreads; ++i) {
-        int start = i * step;
-        int end = (i < numThreads - 1) ? start + step : maxNum;
-        threads.emplace_back(findPrimesThreaded, start, end, &primes, &mtx);
+        int start = i;
+        threads.emplace_back(findPrimesThreaded, start, maxNum, step, &primes, &mtx);
     }
 
     for (auto& thread : threads) {
@@ -61,7 +60,7 @@ std::vector<int> generatePrimesConcurrently(int numThreads, int maxNum) {
 int main()
 {
     int maxNumberToCheck = 1000000;
-    int repetitions = 100;
+    int repetitions = 10;
     int threads = 4;
     std::vector<int> resultNonThreaded;
     auto start = std::chrono::high_resolution_clock::now();
