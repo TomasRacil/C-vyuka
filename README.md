@@ -1,0 +1,1 @@
+Stará verz výuky pro visual studio 2019
