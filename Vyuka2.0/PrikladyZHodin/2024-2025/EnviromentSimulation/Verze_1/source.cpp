@@ -67,7 +67,7 @@ public:
 
     void konzumuj(Organismus *other) override
     {
-        if (other->getTyp() == 'R')
+        if (other->getTyp() == 'R' && energie > other->energie)
         {
             energie += other->energie;
             other->energie = 0;
@@ -87,7 +87,7 @@ public:
 
     void konzumuj(Organismus *other) override
     {
-        if (other->getTyp() == 'B')
+        if (other->getTyp() == 'B' && energie > other->energie)
         {
             energie += other->energie;
             other->energie = 0;
@@ -107,29 +107,51 @@ public:
 
     void krok()
     {
-        for (auto it = organismy.begin(); it != organismy.end();)
-        {
-            (*it)->pohyb();
-            (*it)->metabolismus();
-            (*it)->rozmnozovani();
 
-            for (auto it2 = organismy.begin(); it2 != organismy.end(); ++it2)
+        for (Organismus *o : organismy)
+        {
+            o->pohyb();
+            o->metabolismus();
+            o->rozmnozovani();
+        }
+
+        for (Organismus *o1 : organismy)
+        {
+            for (Organismus *o2 : organismy)
             {
-                if (it != it2 && (*it)->x == (*it2)->x && (*it)->y == (*it2)->y)
+                if (o1 != o2 && o1->x == o2->x && o1->y == o2->y)
                 {
-                    (*it)->konzumuj(*it2);
+                    o1->konzumuj(o2);
                 }
             }
-
-            if (!(*it)->jeZivy())
-            {
-                it = organismy.erase(it);
-            }
-            else
-            {
-                ++it;
-            }
         }
+
+        organismy.remove_if([](Organismus *o)
+                            { return !o->jeZivy(); });
+
+        // for (auto it = organismy.begin(); it != organismy.end();)
+        // {
+        //     (*it)->pohyb();
+        //     (*it)->metabolismus();
+        //     (*it)->rozmnozovani();
+
+        //     for (auto it2 = organismy.begin(); it2 != organismy.end(); ++it2)
+        //     {
+        //         if (it != it2 && (*it)->x == (*it2)->x && (*it)->y == (*it2)->y)
+        //         {
+        //             (*it)->konzumuj(*it2);
+        //         }
+        //     }
+
+        //     if (!(*it)->jeZivy())
+        //     {
+        //         it = organismy.erase(it);
+        //     }
+        //     else
+        //     {
+        //         ++it;
+        //     }
+        // }
     }
 
     template <typename T>
@@ -141,8 +163,8 @@ public:
     template <typename T>
     void pridejOrganismus(int x, int y)
     {
-        int new_position_x = std::max(0, std::min(sirka - 1, x + rand() % 3 - 1));
-        int new_position_y = std::max(0, std::min(vyska - 1, y + rand() % 3 - 1));
+        int new_position_x = std::max(0, std::min(sirka - 1, x));
+        int new_position_y = std::max(0, std::min(vyska - 1, y));
 
         T *organismus = new T(new_position_x, new_position_y, this);
         organismy.push_back(organismus);
