@@ -1,5 +1,4 @@
 #include "Transaction.h"
-#include "Training.h"
 
 Transaction::Transaction(int from, int to, int amount, Date date)
 {
@@ -14,7 +13,8 @@ Transaction::Transaction(std::string transaction)
 	std::stringstream ss(transaction);
 	std::vector<std::string> items;
 	std::string item;
-	while (std::getline(ss, item, ';')) {
+	while (std::getline(ss, item, ';'))
+	{
 		items.push_back(item);
 	}
 	from = stoi(items[0]);
@@ -25,13 +25,15 @@ Transaction::Transaction(std::string transaction)
 
 bool Transaction::isConectedToAccount(int account)
 {
-	if (from == account or to == account) return true;
+	if (from == account or to == account)
+		return true;
 	return false;
 }
 
 bool Transaction::isIncoming(int account)
 {
-	if (to == account) {
+	if (to == account)
+	{
 		return true;
 	}
 	return false;
@@ -47,9 +49,10 @@ Date Transaction::getDate()
 	return date;
 }
 
-bool Transaction::operator<(const Transaction& obj)
+bool Transaction::operator<(const Transaction &obj)
 {
-	if (this->date < obj.date) {
+	if (this->date < obj.date)
+	{
 		return true;
 	}
 	return false;
@@ -71,7 +74,8 @@ Date::Date(std::string date)
 	std::stringstream ss(date);
 	std::vector<std::string> items;
 	std::string item;
-	while (std::getline(ss, item, '.')) {
+	while (std::getline(ss, item, '.'))
+	{
 		items.push_back(item);
 	}
 	day = stoi(items[0]);
@@ -79,29 +83,37 @@ Date::Date(std::string date)
 	year = stoi(items[2]);
 }
 
-bool Date::operator<(const Date& obj)
+bool Date::operator<(const Date &obj)
 {
-	if (year < obj.year) return true;
-	else if (year > obj.year) return false;
-	else {
-		if (month < obj.month) return true;
-		else if (month > obj.month) return false;
-		else {
-			if (day < obj.day) return true;
-			else return false;
+	if (year < obj.year)
+		return true;
+	else if (year > obj.year)
+		return false;
+	else
+	{
+		if (month < obj.month)
+			return true;
+		else if (month > obj.month)
+			return false;
+		else
+		{
+			if (day < obj.day)
+				return true;
+			else
+				return false;
 		}
 	}
 	return false;
 }
 
-std::ostream& operator<<(std::ostream& out, const Date& obj)
+std::ostream &operator<<(std::ostream &out, const Date &obj)
 {
 	out << obj.day << "." << obj.month << "." << obj.year;
 	return out;
 }
 
-std::ostream& operator<<(std::ostream& out, const Transaction& obj)
+std::ostream &operator<<(std::ostream &out, const Transaction &obj)
 {
-	out << obj.from<<";"<<obj.to<<";"<<obj.amount<<";"<<obj.date;
+	out << obj.from << ";" << obj.to << ";" << obj.amount << ";" << obj.date;
 	return out;
 }

@@ -76,7 +76,9 @@ int main() {
 
 V tomto příkladu statický atribut `pocet_instanci` uchovává počet vytvořených instancí třídy `Pocitadlo`. Statická metoda `getPocetInstanci()` vrací hodnotu tohoto atributu.
 
-## Cvičení
+**Poznámka:** Statické členy by se měly používat s rozvahou. Nadměrné používání statických členů může vést k méně přehlednému a hůře udržovatelnému kódu.
+
+### Cvičení
 
 **Zadání:**
 
@@ -88,5 +90,3 @@ Vytvořte třídu `Matematika` se statickými metodami pro základní matematick
 * `deleni(int a, int b)`: Vrací podíl čísel `a` a `b`. Pokud je `b` rovno nule, vraťte 0 a vypište chybové hlášení.
 
 V `main` funkci otestujte funkčnost těchto metod s různými vstupními hodnotami.
-
-**Poznámka:** Statické členy by se měly používat s rozvahou. Nadměrné používání statických členů může vést k méně přehlednému a hůře udržovatelnému kódu.
