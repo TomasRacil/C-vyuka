@@ -2,6 +2,8 @@
 
 Ukazatele jsou proměnné, které uchovávají paměťovou adresu jiné proměnné. Umožňují přímý přístup k paměti a manipulaci s daty uloženými v paměti.
 
+![Pointer](https://hackingcpp.com/cpp/lang/pointers1.svg)
+
 ### Deklarace ukazatele
 
 Ukazatel se deklaruje s uvedením typu dat, na která ukazuje, a symbolem hvězdičky (`*`).
