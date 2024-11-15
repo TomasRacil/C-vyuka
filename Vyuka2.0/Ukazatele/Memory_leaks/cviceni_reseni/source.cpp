@@ -15,12 +15,13 @@ int main()
 
     for (int i = 0; i < velikost; i++)
     {
-        std::cout << pole[i] << " ";
+        int *temp = pole + i;
+        std::cout << *temp << " ";
     }
     std::cout << std::endl;
 
     // Záměrně vynecháno
-    // delete[] pole;
+    delete[] pole;
 
     return 0;
 }
