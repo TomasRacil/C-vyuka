@@ -1,59 +1,46 @@
 #include <iostream>
 #include <vector>
+#include <stdexcept>
+
+using namespace std;
 
 template <typename T>
 class Stack
 {
 public:
-    void push(T value)
+    void push(T val)
     {
-        data.push_back(value);
+        data.push_back(val);
     }
-
-    void pop()
+    T top()
     {
-        if (!data.empty())
+        if (data.empty())
         {
-            data.pop_back();
+            throw out_of_range("Stack is empty");
         }
-        else
-        {
-            std::cout << "Chyba: Zasobnik je prazdny!" << std::endl;
-        }
+        return data.back();
     }
-
-    T top() const
+    T pop()
     {
-        if (!data.empty())
-        {
-            return data.back();
-        }
-        else
-        {
-            std::cout << "Chyba: Zasobnik je prazdny!" << std::endl;
-            return T{}; // Vraťte defaultní hodnotu typu T
-        }
+        T temp = top();
+        data.pop_back();
+        return temp;
     }
 
 private:
-    std::vector<T> data;
+    vector<T> data;
 };
 
 int main()
 {
-    Stack<int> intStack;
-    intStack.push(10);
-    intStack.push(20);
-    intStack.push(30);
-
-    std::cout << "Vrchol zasobniku: " << intStack.top() << std::endl; // Vypíše 30
-    intStack.pop();
-    std::cout << "Vrchol zasobniku po pop(): " << intStack.top() << std::endl; // Vypíše 20
-
-    Stack<std::string> stringStack;
-    stringStack.push("Ahoj");
-    stringStack.push("svete!");
-    std::cout << "Vrchol zasobniku: " << stringStack.top() << std::endl; // Vypíše "svete!"
-
+    Stack<int> s;
+    s.pop();
+    cout << s.top() << endl;
+    s.push(10);
+    s.push(20);
+    s.push(30);
+    s.push(40);
+    cout << s.pop() << endl;
+    cout << s.top() << endl;
     return 0;
 }
