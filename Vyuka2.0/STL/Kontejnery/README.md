@@ -67,33 +67,38 @@ int main() {
 
   // Vektor
   vector<int> cisla = {1, 5, 2, 4, 3};
+  cisla.push_back(6);
   cout << "Vektor: ";
   for (int cislo : cisla) {
     cout << cislo << " ";
   }
-  cout << endl; // Výstup: 1 5 2 4 3
+  cout << endl; // Výstup: 1 5 2 4 3 6
 
   // List
   list<string> jmena = {"Anna", "Petr", "Jan"};
+  jmena.push_back("Jana");
   cout << "List: ";
   for (string jmeno : jmena) {
     cout << jmeno << " ";
   }
-  cout << endl; // Výstup: Anna Petr Jan
+  cout << endl; // Výstup: Anna Petr Jan Jana
 
   // Deque
   deque<double> teploty = {25.5, 24.8, 26.1};
+  teploty.push_back(27.3);
   cout << "Deque: ";
   for (double teplota : teploty) {
     cout << teplota << " ";
   }
-  cout << endl; // Výstup: 25.5 24.8 26.1
+  cout << endl; // Výstup: 25.5 24.8 26.1 27.3
+
 
 
   // Asociativní kontejnery
 
   // Set
   set<char> znaky = {'a', 'c', 'b', 'a'};
+  znaky.insert('c');
   cout << "Set: ";
   for (char znak : znaky) {
     cout << znak << " ";
@@ -102,12 +107,12 @@ int main() {
 
   // Map
   map<string, int> vek = {{"Anna", 25}, {"Petr", 30}};
+  vek["Jan"] = 30;
   cout << "Map: ";
   for (auto const& [klic, hodnota] : vek) {
     cout << klic << ":" << hodnota << " ";
   }
-  cout << endl; // Výstup: Anna:25 Petr:30
-
+  cout << endl; // Výstup: Anna:25 Petr:30 Jan:30
 
   // Kontejnery adaptérů
 
