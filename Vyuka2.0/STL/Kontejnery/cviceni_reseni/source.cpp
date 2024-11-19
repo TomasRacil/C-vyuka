@@ -29,6 +29,14 @@ int main()
         cout << "Osoba s jménem " << hledaneJmeno << " nebyla nalezena." << endl;
     }
 
+    for (auto const &[jmeno, vek] : osoby)
+    {
+        if (jmeno == hledaneJmeno)
+        {
+            cout << "Věk osoby " << hledaneJmeno << " je " << vek << endl;
+        }
+    }
+
     string jmenoKOdstraneni = "Pavel";
     osoby.erase(jmenoKOdstraneni);
 
